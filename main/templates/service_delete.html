@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Удаление медицинской услуги</title>
+</head>
+<body>
+    <h1>Удаление медицинской услуги</h1>
+    <p>Вы уверены, что хотите удалить услугу "{{ service.name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Да, удалить</button>
+    </form>
+</body>
+{% endblock %}
+</html>

@@ -1,0 +1,18 @@
+[
+  {
+    "model": "main.doctor",
+    "pk": 1,
+    "fields": {
+      "name": "John Smith",
+      "specialization": "Cardiologist"
+    }
+  },
+  {
+    "model": "main.doctor",
+    "pk": 2,
+    "fields": {
+      "name": "Emily Johnson",
+      "specialization": "Dermatologist"
+    }
+  }
+]

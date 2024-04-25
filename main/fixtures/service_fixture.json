@@ -1,0 +1,20 @@
+[
+  {
+    "model": "main.service",
+    "pk": 1,
+    "fields": {
+      "name": "Heart Checkup",
+      "description": "Comprehensive examination of heart health.",
+      "doctor": 1
+    }
+  },
+  {
+    "model": "main.service",
+    "pk": 2,
+    "fields": {
+      "name": "Skin Biopsy",
+      "description": "Diagnostic procedure for skin conditions.",
+      "doctor": 2
+    }
+  }
+]

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список врачей</title>
+</head>
+<body>
+    <h1>Список врачей</h1>
+    <ul>
+        {% for doctor in doctors %}
+            <li>{{ doctor.name }} - {{ doctor.specialization }}</li>
+        {% endfor %}
+    </ul>
+</body>
+{% endblock %}
+</html>
+

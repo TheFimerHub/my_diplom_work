@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <!-- Левый столбец для формы -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Запись на прием</div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        {% if not user.is_authenticated %}
+                            <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-success">Сохранить</button>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+            <a href="{% url 'main:index' %}" class="btn btn-secondary my-3" style="background: #0062cc">Назад</a>
+        </div>
+        <!-- Правый столбец для записей пользователя -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Записи на прием</div>
+                <div class="card-body">
+                    <ul>
+                        {% for appointment in appointments %}
+                            <li>{{ appointment.doctor }} - {{ appointment.date }} {{ appointment.time }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

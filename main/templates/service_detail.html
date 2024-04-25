@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали услуги</title>
+    <style>
+        .button-container {
+            max-width: 300px; /* Максимальная ширина контейнера */
+            display: flex; /* Размещение элементов в строку */
+            gap: 10px; /* Расстояние между кнопками */
+        }
+
+        .button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            flex: 1; /* Распределение пространства между кнопками */
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ service.name }}</h1>
+    <p>Описание: {{ service.description }}</p>
+    <p>Доктор: {{ service.doctor.name }}</p>
+    <div class="button-container">
+        <a href="{% url 'main:service-update' pk=service.pk %}" class="button">Изменить</a>
+        <a href="{% url 'main:service-delete' pk=service.pk %}" class="button">Удалить</a>
+        <a href="{% url 'patients:appointment' %}" class="button">Записаться</a>
+    </div>
+</body>
+{% endblock %}
+</html>
