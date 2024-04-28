@@ -5,6 +5,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import PasswordResetConfirmView, PasswordResetView, PasswordResetDoneView, \
     PasswordResetCompleteView
 from django.core.exceptions import ValidationError
+from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils.http import urlsafe_base64_decode
@@ -42,9 +43,18 @@ class AppointmentFormView(FormView):
             appointment = form.save(commit=False)
             appointment.patient = request.user
             appointment.save()
+            self.send_email_to_patient(appointment)
+
             return redirect('main:index')
         doctors = Doctor.objects.all()
         return render(request, 'appointment_form.html', {'form': form, 'doctors': doctors})
+
+    def send_email_to_patient(self, appointment):
+        subject = 'Запись к врачу успешно создана'
+        message = f'Вы успешно записаны к врачу. Дата: {appointment.date}, Время: {appointment.time}, Врач: {appointment.doctor}'
+        from_email = 'от@вашего.почтового.адреса'
+        to_email = [appointment.patient.email]  # Предполагается, что в модели User у вас есть поле email
+        send_mail(subject, message, from_email, to_email)
 
 
 # class AppointmentView(View):
