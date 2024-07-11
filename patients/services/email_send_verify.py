@@ -3,13 +3,12 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode
-
+from django.utils.encoding import force_bytes
 from config import settings
 
 
 def send_mail_for_verify(request, user):
     current_site = get_current_site(request)
-    from django.utils.encoding import force_bytes
     context = {
         'user': user,
         'domain': current_site.domain,
@@ -27,4 +26,5 @@ def send_mail_for_verify(request, user):
         from_email=settings.EMAIL_HOST_USER,
         to=[user.email]
         )
+
     email.send()

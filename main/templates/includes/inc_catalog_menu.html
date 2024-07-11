@@ -1,85 +1,36 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Медицинские услуги</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-size: 100% 100%; /* Подгоняет фоновое изображение по размерам экрана */
-            background-repeat: no-repeat; /* Запрещает повторение фонового изображения */
-            background-attachment: fixed; /* Зафиксирует фоновое изображение, чтобы оно не скроллилось */
-        }
-        nav {
-            background-color: rgba(240, 240, 240, 0.7); /* полупрозрачный серый */
-            padding: 10px;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            height: 60px; /* увеличение высоты в два раза */
-            display: flex; /* флекс-контейнер */
-            justify-content: center; /* выравнивание по центру */
-            align-items: center; /* выравнивание по центру */
-        }
-        nav ul li {
-            display: inline;
-            margin-right: 100px; /* увеличение промежутка между элементами на полтора раза */
-        }
-        nav ul li a {
-            color: #28a745; /* изменение цвета на мягко зеленый */
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 24px; /* увеличение размера шрифта в два раза */
-        }
-        section {
-            padding: 20px;
-        }
-        section ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex; /* Расположение в виде flex-контейнера */
-            flex-direction: row; /* Горизонтальное направление дочерних элементов */
-        }
-        section ul li {
-            margin-right: 20px; /* Добавление промежутка между элементами */
-        }
-
-    </style>
-</head>
-<body>
-
-<nav>
-    <ul>
-        <li><a href="{% url 'main:index' %}">Main</a></li>
-
-        <li><a href="{% url 'main:service-list' %}">Services</a></li>
-        {% if perms.blog.add_post %}
-            <li><a href="{% url 'blog:home' %}">Blog</a></li>
-        {% endif %}
-        {% if user.is_authenticated %}
-        <li><a href="{% url 'patients:profile' %}">Profile</a></li>
-            <li>
-                <form action="{% url 'patients:logout' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit" style="border:none; background:none; cursor:pointer;">
-                        Logout
-                    </button>
-                </form>
-            </li>
-
-        {% else %}
-            <li><a href="{% url 'patients:register' %}">Register</a></li>
-            <li><a href="{% url 'patients:login' %}">Login</a></li>
-        {% endif %}
-    </ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'main:index' %}">MedSite</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'main:index' %}">Main</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'main:service-list' %}">Services</a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'patients:profile' %}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="{% url 'patients:logout' %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link nav-link">Logout</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'patients:register' %}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'patients:login' %}">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 </nav>
-
-</body>
-</html>

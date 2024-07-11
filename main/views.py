@@ -6,7 +6,6 @@ from main.forms import ServiceForm
 from main.models import Doctor, Service
 
 
-# Create your views here.
 def index(request):
     return render(request, 'index.html')
 

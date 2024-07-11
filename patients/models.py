@@ -14,11 +14,6 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
-    class Meta:
-        verbose_name = 'Пользователь'
-        verbose_name_plural = 'Пользователи'
-
-
 class Appointment(models.Model):
     patient = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
@@ -29,7 +24,5 @@ class Appointment(models.Model):
         return f"{self.patient} - {self.doctor} - {self.date} {self.time}"
 
     class Meta:
-        verbose_name = 'Прием'
-        verbose_name_plural = 'Приемы'
-
-# Create your models here.
+        verbose_name = 'Appointment'
+        verbose_name_plural = 'Appointments'

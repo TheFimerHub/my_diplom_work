@@ -1,0 +1,90 @@
+/* Общие стили для контейнера и элементов */
+.container, .card {
+    max-width: 960px;
+    margin: auto;
+    padding: 0 15px;
+    border: none;
+}
+
+.card:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для заголовков и текста */
+.display-4 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.lead {
+    font-size: 1.25rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.text-primary {
+    color: #007bff;
+}
+
+/* Стили для кнопок */
+.btn-primary, .button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover, .button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Стили для страницы удаления услуги */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.container-delete {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+form {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #c82333;
+}

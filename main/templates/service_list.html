@@ -1,54 +1,26 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
 {% block content %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Список медицинских услуг</title>
-    <style>
-        .service-container {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 10px; /* добавляем скругление углов */
-        }
-        .service-title {
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-        .service-description {
-            color: #666;
-            margin-bottom: 10px;
-        }
-        .doctor-name {
-            font-style: italic;
-            color: #888;
-        }
-        .read-more-link {
-            background-color: #007bff; /* синий цвет кнопки */
-            color: #fff; /* белый цвет текста */
-            text-decoration: none;
-            padding: 8px 15px; /* добавляем отступы */
-            border-radius: 5px; /* добавляем скругление углов */
-        }
-        .read-more-link:hover {
-            background-color: #0056b3; /* изменяем цвет при наведении */
-        }
-    </style>
-</head>
-<body>
-    <h1>Список медицинских услуг</h1>
-    <div>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>List of medical services</title>
+    </head>
+    <body>
+    <h1>List of medical services</h1>
+    <div class="">
         {% for service in services %}
-            <div class="service-container">
-                <h2 class="service-title">{{ service.name }}</h2>
-                <p class="service-description">{{ service.description }}</p>
-                <p class="doctor-name">Доктор: {{ service.doctor.name }}</p>
-                <a href="{% url 'main:service-detail' service.id %}" class="read-more-link">Подробнее</a>
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title">{{ service.name }}</h2>
+                    <p class="card-text">{{ service.description }}</p>
+                    <p class="card-text">Доктор: {{ service.doctor.name }}</p>
+                    <a href="{% url 'main:service-detail' service.id %}" class="btn btn-primary">Подробнее</a>
+                </div>
             </div>
         {% endfor %}
     </div>
-</body>
+    </body>
 {% endblock %}
 </html>
